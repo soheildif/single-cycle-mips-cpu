@@ -17,7 +17,7 @@ module Adder(
 // Interface
 input   [31:0]  data1_in;
 input   [31:0]  data2_in;
-output  [31:0]  data_out;
+output  [31:0]  aaadata_out;
 
 assign data_out = data1_in + data2_in;
   
