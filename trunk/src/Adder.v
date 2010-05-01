@@ -1,17 +1,18 @@
-// =============================================================================
-// 
-// Name           : Adder.v
-// Author         : Hakki Caner Kirmizi
-// Date           : 2010-4-30
-// Description    : A module that sums up two 32-bit input and assigns to 
-// 					32-bit output
-//                  
-// =============================================================================
+/* =============================================================================
+ *
+ * Name           : Adder.v
+ * Author         : Hakki Caner Kirmizi
+ * Date           : 2010-5-1
+ * Description    : A module that sums up two 32-bit input and assigns to 
+ * 					32-bit output
+ *                  
+ * =============================================================================
+*/
 
 module Adder(
-    .data1_in,
-    .data2_in,
-    .data_out
+    data1_in,
+    data2_in,
+    data_out
 );
 
 
