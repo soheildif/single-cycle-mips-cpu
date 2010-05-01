@@ -10,8 +10,8 @@
 */
 
 module Signed_Extend(
-    .data_in,
-    .data_out
+    data_in,
+    data_out
 );
 
 input	[15:0]	data_in;
