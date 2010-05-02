@@ -1,3 +1,167 @@
+<<<<<<< .mine
+// UCA 2010
+//=========================================================
+// Single Cycle MIPS CPU
+//=========================================================
+// Supported instructions
+// R-type: add, sub, and, or, slt
+// I-type: addi, andi, ori, lw, sw, beq
+//
+//=========================================================
+// Input/Output Signals:
+// positive-edge triggered clock    clk
+// active low asynchronous reset    rst_n
+//
+//=========================================================
+// Wire/Reg Specifications:
+// control signals                  RegDST, Branch, MemRead,
+//                                  MemtoReg, ALUOp, MemWrite,   
+//                                  ALUSrc, RegWrite
+// MUX output signals               MUX_RegDST, MUX_ALUSrc, 
+//                                  MUX_Branch, MUX_MemtoReg
+//
+//=========================================================
+
+module SingleCycle_CPU(
+    clk,
+    rst_n
+);
+
+// input/output declaration
+input   clk, rst_n;
+
+// Wire/Reg declaration
+wire [31:0] PCout, PCin, Inst, SignExtendOut, ALUout, MUX5out, MUX32out, RDdata1, RDdata2;
+wire [2:0]  ALUCtrl;
+wire [1:0]  ALUOp;
+wire		Zero, RegDst, ALUSrc, RegWrite;
+
+
+PC PC(
+    .clk        (clk),
+    .rst_n      (rst_n),
+    .pc_in      (PCin),
+    .pc_out     (PCout)
+);
+
+
+Adder PC_Add_4(
+    .data1_in   (PCin),
+    .data2_in   (4),
+    .data_out   (PCout)
+);
+
+
+Instr_Memory Instr_Memory(
+    .addr       (PCout), 
+    .instr      (Inst)
+);
+
+/*
+Control Control(
+    .opcode     (),
+    .RegDst     (),
+    .Branch     (),
+    .MemRead    (),
+    .MemtoReg   (),
+    .ALUOp      (),
+    .MemWrite   (),
+    .ALUSrc     (),
+    .RegWrite   ()
+);
+*/
+
+/*
+MUX_5bit MUX_RegDst(
+    .data1_in   (),
+    .data2_in   (),
+    .select     (),
+    .data_out   ()
+);
+*/
+
+Register_File Register_File(
+    .clk        (clk),
+    .Rs_addr    (Inst[25:21]),
+    .Rt_addr    (Inst[20:16]),
+    .Rd_addr    (MUX5out), 
+    .Rd_data    (ALUout),
+    .RegWrite   (RegWrite), 
+    .Rs_data    (RDdata1), 
+    .Rt_data    (RDdata2)
+);
+
+
+Signed_Extend Signed_Extend(
+    .data_in    (Inst[15:0]),
+    .data_out   (SignExtendOut)
+);
+
+
+/*
+Adder PC_Add_Offset(
+    .data1_in   (),
+    .data2_in   (),
+    .data_out   ()
+);
+*/
+
+/*
+MUX_32bit MUX_ALUSrc(
+    .data1_in   (),
+    .data2_in   (),
+    .select     (),
+    .data_out   ()
+);
+*/
+
+
+ALU_Control ALU_Control(
+    .funct      (Inst[5:0]),
+    .ALUOp      (ALUOp),
+    .ALUCtrl    (ALUCtrl)
+);
+
+  
+
+ALU ALU(
+    .data1_in   (RDdata1),
+    .data2_in   (MUX32out),
+    .ALUCtrl    (ALUCtrl),
+    .data       (ALUout),
+    .Zero       (Zero)
+);
+
+
+/*
+MUX_32bit MUX_Branch(
+    .data1_in   (),
+    .data2_in   (),
+    .select     (),
+    .data_out   ()
+);
+*/
+
+Data_Memory Data_Memory(
+    .clk        (clk),
+    .addr       (),
+    .data_in    (),
+    .MemRead    (),
+    .MemWrite   (),
+    .data_out   ()
+);
+
+/*
+MUX_32bit MUX_MemtoReg(
+    .data1_in   (),
+    .data2_in   (),
+    .select     (),
+    .data_out   ()
+);
+*/
+
+endmodule
+=======
 // UCA 2010
 //=========================================================
 // Single Cycle MIPS CPU
@@ -158,3 +322,4 @@ MUX_32bit MUX_MemtoReg(
 );
 
 endmodule
+>>>>>>> .r10
