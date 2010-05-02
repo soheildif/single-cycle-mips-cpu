@@ -42,7 +42,7 @@ module ALU_Control(
 		   );
    
    input [5:0]	funct;		// 6-bit represents instruction's 'address' part
-   input [1:0] 	ALUOp;		// 2-bit comes from Control
+   input [2:0] 	ALUOp;		// 3-bit comes from Control
    output [2:0] ALUCtrl;	// 3-bit control signal represents the operation type, e.g. add, or etc..
    
    reg [2:0] 	ALUCtrl;

@@ -15,14 +15,14 @@ module Control(
    output [2:0] ALUOp;
    reg [9:0] 	out;
    
-   assign RegDst = out[8];
-   assign Branch = out[7];
-   assign MemRead = out[6];
-   assign MemtoReg = out[5];
-   assign MemWrite = out[4];
-   assign ALUSrc = out[3];
-   assign RegWrite = out[2];
-   assign ALUOP = out[2:0];
+   assign RegDst = out[9];
+   assign Branch = out[8];
+   assign MemRead = out[7];
+   assign MemtoReg = out[6];
+   assign MemWrite = out[5];
+   assign ALUSrc = out[4];
+   assign RegWrite = out[3];
+   assign ALUOp = out[2:0];
    
    always @(opcode)
      case(opcode)
