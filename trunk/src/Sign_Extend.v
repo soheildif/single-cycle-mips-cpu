@@ -18,6 +18,8 @@ input	[15:0]	data_in;
 output	[31:0]	data_out;
 
 // n{m} form will generate a vector of bits with the pattern m repeated n times
-assign data_out = { 16{data_in[31]}, data_in };
-
+always @(data_in) begin
+	assign data_out = { 16{data_in[31]}, data_in };
+end
+	
 endmodule
