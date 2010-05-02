@@ -1,4 +1,4 @@
-﻿/* =============================================================================
+/* =============================================================================
  *
  * Name           : ALU.v
  * Author         : Hakki Caner Kirmizi
@@ -28,6 +28,8 @@ input	[2:0]	ALUCtrl;
 output	[31:0]	data;
 output			Zero;
 
+reg [31:0] data;
+reg Zero;
 
 always @(data1_in or data2_in or ALUCtrl) begin
 	// ALUCtrl = 010 (add, lw, sw)

@@ -1,4 +1,4 @@
-﻿/* =============================================================================
+/* =============================================================================
  *
  * Name           : Sign_Extend.v
  * Author         : Hakki Caner Kirmizi
@@ -17,9 +17,6 @@ module Signed_Extend(
 input	[15:0]	data_in;
 output	[31:0]	data_out;
 
-// n{m} form will generate a vector of bits with the pattern m repeated n times
-always @(data_in) begin
-	assign data_out = { 16{data_in[31]}, data_in };
-end
+assign data_out = {{16{data_in[15]}}, data_in};
 	
 endmodule
