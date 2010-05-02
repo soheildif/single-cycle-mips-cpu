@@ -1,4 +1,4 @@
-module MUX_32bit.v(    
+module MUX_32bit(    
     data1_in,
     data2_in,
     select,
@@ -9,6 +9,6 @@ input [31:0] data1_in, data2_in;
 input select;
 output [31:0] data_out;
 
-assign data_out = (select) ? data2_in, data1_in;
+assign data_out = (select) ? data2_in : data1_in;
 
 endmodule
